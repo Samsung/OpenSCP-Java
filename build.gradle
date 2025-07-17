@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'com.samsung.openscp'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.16'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.16'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.bouncycastle:bcpkix-jdk15to18:1.78.1'
+}
+
+javadoc {
+    destinationDir = file("${buildDir}/docs/javadoc")
+    include 'com/samsung/openscp/**'
+}
+
+test {
+    useJUnitPlatform()
+}

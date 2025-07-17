@@ -1,0 +1,16 @@
+# Global build & output directories
+.out
+
+# Java
+.gradle
+build
+local.properties
+
+# Python
+__pycache__
+
+# IDE
+.idea
+
+# Miscellaneous
+nohup.out

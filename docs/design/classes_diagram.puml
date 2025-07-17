@@ -1,0 +1,47 @@
+@startuml
+
+set separator none
+
+title OpenSCP library API
+
+package com.samsung.openscp as openscp {
+    class SecurityDomainSession {
+        + SecurityDomainSession(SmartCardConnection connection)
+        + List<ScpCertificate> getCertificateBundle(KeyRef keyRef)
+        + void authenticate(ScpKeyParams keyParams, ScpMode mode)
+        + byte[] sendAndReceive(Apdu apdu)
+    }
+
+    interface SmartCardConnection {
+        + byte[] sendAndReceive(byte[] apdu)
+        + boolean isExtendedLengthApduSupported()
+        + void close()
+    }
+
+    interface ScpKeyParams
+    class Scp03KeyParams
+    class Scp11KeyParams
+
+    SecurityDomainSession --* SmartCardConnection
+    SecurityDomainSession --* ScpKeyParams
+    Scp03KeyParams ..|> ScpKeyParams
+    Scp11KeyParams ..|> ScpKeyParams
+}
+
+package "Client app" {
+    class ClientSession
+    class ClientTransport
+
+    ClientSession --* ClientTransport
+}
+
+ClientSession --* SecurityDomainSession
+ClientTransport ..|> SmartCardConnection
+
+note top of openscp: Only essential\nclasses and methods\nare shown
+
+legend
+    See PlantUML Class diagram documentation for notation used
+end legend
+
+@enduml

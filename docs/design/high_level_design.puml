@@ -1,0 +1,77 @@
+@startuml
+
+skinparam componentStyle rectangle
+
+title OpenSCP-Java high-level design
+
+!$project_inscope_color = "#LightGreen"
+!$client_color = "#LightBlue"
+!$outofscope_color = "#LightGrey"
+
+
+legend
+    <color:lightgreen>**Green**</color> - component which is in the scope of project
+    <color:lightgrey>**Gray**</color> - out of scope component
+    <color:lightblue>**Blue**</color> - client application uses the project
+end legend
+
+<style>
+legend {
+    BackGroundColor transparent
+}
+</style>
+
+
+node "Host PC" as host_pc {
+    package "SCP solution" as scp_solution {
+        package "Java SCP lib" as scp_lib_java {
+            component session_java $project_inscope_color [
+                SCP session
+            ]
+            component scp03 $project_inscope_color [
+                SCP03
+            ]
+            component scp11 $project_inscope_color [
+                SCP11
+            ]
+            component transport_java $project_inscope_color [
+                Transport
+            ]
+
+            session_java -- scp03
+            session_java -- scp11
+            session_java - transport_java
+        }
+    }
+
+    package "eSE management app" as ese_manager $client_color {
+        component transport $outofscope_color [
+            Transport layer
+            (NFC, USB)
+        ]
+        component manager $outofscope_color [
+            Applet / SD 
+            manager
+        ]
+
+        manager - transport  
+        manager -- session_java: Configure SCP
+        transport -- transport_java: Wrap\n plain\n messages
+    }
+}
+
+
+node "Device" as device {
+    package "eSE" as ese {
+        package "Security Domain" as sd {
+            component [Applet] as applet $outofscope_color
+        }
+        package "JavaCard OS" as jcop {
+            component [SCP engine] as scp $outofscope_color
+        }
+        sd -- jcop
+    }
+    transport -- sd: Exchange\n with \n wrapped APDU
+}
+
+@enduml

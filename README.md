@@ -15,8 +15,8 @@ The feature set is according to the specifications listed below except for what 
 ## Documentation
 
 - [API](docs/javadoc)
-- [Environment information](/Samsung/OpenSCP-Java/wiki/Environment)
-- [Usage example](/Samsung/OpenSCP-Java/wiki/Usage-example)
+- [Environment information](https://github.com/Samsung/OpenSCP-Java/wiki/Environment)
+- [Usage example](https://github.com/Samsung/OpenSCP-Java/wiki/Usage-example)
 
 ## Known issues
 

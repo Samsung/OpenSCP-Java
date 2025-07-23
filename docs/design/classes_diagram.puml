@@ -40,8 +40,4 @@ ClientTransport ..|> SmartCardConnection
 
 note top of openscp: Only essential\nclasses and methods\nare shown
 
-legend
-    See PlantUML Class diagram documentation for notation used
-end legend
-
 @enduml

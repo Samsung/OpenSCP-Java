@@ -26,8 +26,8 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
 
-    - name: Build SCP library
-      run: echo "run SCP build..."
+    - name: Check JVM location name
+      run: ls /usr/lib/jvm/
 
     - name: Build SCP library
       run: python3.10 scripts/build.py -c lib

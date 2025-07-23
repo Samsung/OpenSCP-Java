@@ -19,12 +19,12 @@ import pathlib
 
 class Const:
     class Path:
-        # root dirs
+        # common
         PROJECT_ROOT = pathlib.Path(__file__).parent.parent
-        # java dirs
-        JAVA_BUILD_DIR = PROJECT_ROOT / "build"
-        JAVA_LIBS_DIR = JAVA_BUILD_DIR / "libs"
-        JAVA_DOCS_DIR = JAVA_BUILD_DIR / "docs" / "javadoc"
+        # library
+        BUILD_DIR = PROJECT_ROOT / "build"
+        LIBS_DIR = BUILD_DIR / "libs"
+        DOCS_DIR = BUILD_DIR / "docs" / "javadoc"
         # artifacts
         OUT_DIR = PROJECT_ROOT / ".out"
         OUT_LIB_DIR = OUT_DIR / "lib"

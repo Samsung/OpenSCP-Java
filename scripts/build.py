@@ -58,8 +58,8 @@ def parse_arguments() -> argparse.Namespace:
 
 def build_java(clean_build: bool) -> None:
     remove_java_artifacts([
-        Const.Path.JAVA_LIBS_DIR,
-        Const.Path.JAVA_DOCS_DIR,
+        Const.Path.LIBS_DIR,
+        Const.Path.DOCS_DIR,
         Const.Path.OUT_LIB_DIR])
     gradle_project_build(clean_build)
     collect_java_artifacts()
@@ -94,12 +94,12 @@ def build_gradle_cmd(action: str) -> str:
 
 
 def collect_java_artifacts() -> None:
-    lib_artifacts_path = Const.Path.JAVA_LIBS_DIR / "*"
+    lib_artifacts_path = Const.Path.LIBS_DIR / "*"
     collect_artifacts(lib_artifacts_path, Const.Path.OUT_LIB_DIR)
 
 
 def collect_java_doc_artifacts() -> None:
-    doc_artifacts_path = Const.Path.JAVA_DOCS_DIR / "*"
+    doc_artifacts_path = Const.Path.DOCS_DIR / "*"
     collect_artifacts(doc_artifacts_path, Const.Path.OUT_DOCS_DIR)
 
 

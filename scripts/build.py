@@ -45,6 +45,7 @@ def parse_arguments() -> argparse.Namespace:
                                      formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-c", "--component",
                         choices=components,
+                        required=True,
                         help="Target component to build:\n"
                              f"  {Component.LIB.value}: Java SCP library\n"
                              f"  {Component.DOC.value}: Java SCP library documentation")

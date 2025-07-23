@@ -24,9 +24,8 @@ class Const:
         # java dirs
         JAVA_BUILD_DIR = PROJECT_ROOT / "build"
         JAVA_LIBS_DIR = JAVA_BUILD_DIR / "libs"
-        JAVA_DOCS_DIR = JAVA_BUILD_DIR / "docs"
+        JAVA_DOCS_DIR = JAVA_BUILD_DIR / "docs" / "javadoc"
         # artifacts
         OUT_DIR = PROJECT_ROOT / ".out"
-        DELIVERABLES_OUT_DIR = OUT_DIR / "deliverables"
-        DELIVERABLES_JAVA_DIR = DELIVERABLES_OUT_DIR / "java"
-        DELIVERABLES_JAVA_DOC_DIR = DELIVERABLES_JAVA_DIR / "docs"
+        OUT_LIB_DIR = OUT_DIR / "lib"
+        OUT_DOCS_DIR = OUT_DIR / "javadoc"

@@ -28,3 +28,9 @@ jobs:
 
     - name: Build SCP library
       run: echo "run SCP build..."
+
+    - name: Build SCP library
+      run: python3.10 scripts/build.py -c lib
+
+    - name: Build SCP library documentation
+      run: python3.10 scripts/build.py -c doc

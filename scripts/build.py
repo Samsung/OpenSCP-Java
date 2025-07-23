@@ -60,13 +60,13 @@ def build_java(clean_build: bool) -> None:
     remove_java_artifacts([
         Const.Path.JAVA_LIBS_DIR,
         Const.Path.JAVA_DOCS_DIR,
-        Const.Path.DELIVERABLES_JAVA_DIR])
+        Const.Path.OUT_LIB_DIR])
     gradle_project_build(clean_build)
     collect_java_artifacts()
 
 
 def build_javadoc() -> None:
-    remove_java_artifacts([Const.Path.DELIVERABLES_JAVA_DOC_DIR])
+    remove_java_artifacts([Const.Path.OUT_DOCS_DIR])
     gradle_project_doc_build()
     collect_java_doc_artifacts()
 
@@ -95,12 +95,12 @@ def build_gradle_cmd(action: str) -> str:
 
 def collect_java_artifacts() -> None:
     lib_artifacts_path = Const.Path.JAVA_LIBS_DIR / "*"
-    collect_artifacts(lib_artifacts_path, Const.Path.DELIVERABLES_JAVA_DIR)
+    collect_artifacts(lib_artifacts_path, Const.Path.OUT_LIB_DIR)
 
 
 def collect_java_doc_artifacts() -> None:
     doc_artifacts_path = Const.Path.JAVA_DOCS_DIR / "*"
-    collect_artifacts(doc_artifacts_path, Const.Path.DELIVERABLES_JAVA_DIR)
+    collect_artifacts(doc_artifacts_path, Const.Path.OUT_DOCS_DIR)
 
 
 if __name__ == "__main__":

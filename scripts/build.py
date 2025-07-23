@@ -32,7 +32,7 @@ def main() -> None:
     options = parse_arguments()
     match options.component:
         case Component.LIB.value:
-            build_java(options.clean_build)
+            build_lib(options.clean_build)
         case Component.DOC.value:
             build_javadoc()
         case _:
@@ -56,22 +56,22 @@ def parse_arguments() -> argparse.Namespace:
     return options
 
 
-def build_java(clean_build: bool) -> None:
-    remove_java_artifacts([
-        Const.Path.JAVA_LIBS_DIR,
-        Const.Path.JAVA_DOCS_DIR,
+def build_lib(clean_build: bool) -> None:
+    remove_artifacts([
+        Const.Path.LIBS_DIR,
+        Const.Path.DOCS_DIR,
         Const.Path.OUT_LIB_DIR])
     gradle_project_build(clean_build)
-    collect_java_artifacts()
+    collect_lib_artifacts()
 
 
 def build_javadoc() -> None:
-    remove_java_artifacts([Const.Path.OUT_DOCS_DIR])
+    remove_artifacts([Const.Path.OUT_DOCS_DIR])
     gradle_project_doc_build()
-    collect_java_doc_artifacts()
+    collect_docs_artifacts()
 
 
-def remove_java_artifacts(dirs_to_remove: list[pathlib.Path]) -> None:
+def remove_artifacts(dirs_to_remove: list[pathlib.Path]) -> None:
     commands = [f"rm -rf {dir_path}" for dir_path in dirs_to_remove]
     run_cmds(commands)
 
@@ -93,13 +93,13 @@ def build_gradle_cmd(action: str) -> str:
     return cmd_template.format(project_path=Const.Path.PROJECT_ROOT, action=action)
 
 
-def collect_java_artifacts() -> None:
-    lib_artifacts_path = Const.Path.JAVA_LIBS_DIR / "*"
+def collect_lib_artifacts() -> None:
+    lib_artifacts_path = Const.Path.LIBS_DIR / "*"
     collect_artifacts(lib_artifacts_path, Const.Path.OUT_LIB_DIR)
 
 
-def collect_java_doc_artifacts() -> None:
-    doc_artifacts_path = Const.Path.JAVA_DOCS_DIR / "*"
+def collect_docs_artifacts() -> None:
+    doc_artifacts_path = Const.Path.DOCS_DIR / "*"
     collect_artifacts(doc_artifacts_path, Const.Path.OUT_DOCS_DIR)
 
 

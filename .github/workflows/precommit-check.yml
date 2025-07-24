@@ -26,9 +26,6 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
 
-    - name: Check JAVA_HOME
-      run: echo $JAVA_HOME
-
     - name: Build SCP library
       run: python3.10 scripts/build.py -c lib
 

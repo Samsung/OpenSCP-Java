@@ -21,10 +21,7 @@ jobs:
         python-version: '3.10'
 
     - name: Set up JDK 8
-      uses: actions/setup-java@v4
-      with:
-        java-version: '8'
-        distribution: 'temurin'
+      run: apt install -y openjdk-8-jdk
 
     - name: Check JVM location name
       run: ls /usr/lib/jvm/

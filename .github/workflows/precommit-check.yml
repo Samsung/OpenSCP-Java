@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build SCP
+    name: SCP pre-commit
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,7 +21,13 @@ jobs:
         python-version: '3.10'
 
     - name: Set up JDK 8
-      run: sudo apt-get install -y openjdk-8-jdk
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+
+    - name: Check JAVA_HOME
+      run: echo $JAVA_HOME
 
     - name: Build SCP library
       run: python3.10 scripts/build.py -c lib

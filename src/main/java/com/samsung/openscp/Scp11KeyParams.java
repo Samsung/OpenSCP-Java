@@ -63,7 +63,7 @@ public class Scp11KeyParams implements ScpKeyParams {
     final AesAlg sessionKeysAlg;
 
     /**
-     * SCP11a- & SCP11c-specific constructor
+     * SCP11a- and SCP11c-specific constructor
      *
      * @param keyRef the reference to the key set for associated SK.SD.ECKA
      * @param pkSdEcka public key of the SD used for key agreement (PK.SD.ECKA)

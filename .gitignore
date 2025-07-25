@@ -1,5 +1,5 @@
 # Global build & output directories
-.out
+out
 
 # Java
 .gradle

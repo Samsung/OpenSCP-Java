@@ -32,8 +32,10 @@ jobs:
     - name: Build SCP library documentation
       run: python3.10 scripts/build.py -c doc
 
-    - name: Collect artifacts
+    - name: Check files tree
       run: tree -a
+
+    - name: Collect artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Artifacts for PR ID - {{ github.event.number }}

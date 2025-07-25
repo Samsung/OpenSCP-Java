@@ -33,6 +33,7 @@ jobs:
       run: python3.10 scripts/build.py -c doc
 
     - name: Collect artifacts
+      run: tree -a
       uses: actions/upload-artifact@v4
       with:
         name: Artifacts for PR ID - {{ github.event.number }}

@@ -32,8 +32,11 @@ jobs:
     - name: Build SCP library documentation
       run: python3.10 scripts/build.py -c doc
 
+    - name: Check location
+      run: pwd
+
     - name: Collect artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Artifacts for PR ID - {{ github.event.number }}
-        path: ${{ github.workspace }}/.out/
+        path: ${{ github.workspace }}/../.out/

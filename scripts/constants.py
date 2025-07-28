@@ -26,6 +26,6 @@ class Const:
         LIBS_DIR = BUILD_DIR / "libs"
         DOCS_DIR = BUILD_DIR / "docs" / "javadoc"
         # artifacts
-        OUT_DIR = PROJECT_ROOT / "out"
+        OUT_DIR = PROJECT_ROOT / ".out"
         OUT_LIB_DIR = OUT_DIR / "lib"
         OUT_DOCS_DIR = OUT_DIR / "javadoc"

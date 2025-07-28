@@ -35,5 +35,5 @@ jobs:
     - name: Collect artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: Artifacts for PR ID - {{ github.event.number }}
-        path: build
+        name: Artifacts
+        path: out

@@ -1,4 +1,4 @@
-![Logo](docs/img/openscp-light.png)
+![Logo](docs/img/openscp-icon.png)
 
 # SCP03 and SCP11 protocols implementation for off-card entity
 
